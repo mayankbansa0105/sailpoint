@@ -12,7 +12,7 @@ GO
 
 --create a sql server login with which to connect
 CREATE LOGIN [identityiq] WITH PASSWORD='identityiq',
-DEFAULT_DATABASE=identityiq
+DEFAULT_DATABASE=identityiq, CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
 GO
 
 USE identityiq
@@ -51,7 +51,7 @@ CREATE DATABASE identityiqPlugin
 GO
 
 --create a sql server login with which to connect
-CREATE LOGIN [identityiqPlugin] WITH PASSWORD='identityiqPlugin',
+CREATE LOGIN [identityiqPlugin] WITH PASSWORD='identityiqPlugin', CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
 DEFAULT_DATABASE=identityiqPlugin
 GO
 
