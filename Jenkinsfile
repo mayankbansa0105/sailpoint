@@ -35,10 +35,22 @@ pipeline {
           
           steps {
              sh ''' cd $WORKSPACE/sailpoint/Terraform_mssql
+             terraform init
   terraform apply -auto-approve'''
               
           }
       }
+      
+      stage ('DB schema creation') {
+      steps {
+         sh '''cd $WORKSPACE/sailpoint/Terraform_mssql
+ip=`terraform output public_ip`
+temp="${ip%\\"}"
+publicip="${temp#\\"}"
+echo $publicip 
+sqlcmd -S $publicip -U SA -P 5Vnzur276332 -i $WORKSPACE/sailpoint/sql.sql -o output.txt
+'''
+      }
         }
 		}
-		
+}
