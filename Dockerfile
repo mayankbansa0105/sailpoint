@@ -4,7 +4,6 @@ WORKDIR $CATALINA_HOME/webapps/identityiq
 
 COPY identityiq.war $CATALINA_HOME/webapps/identityiq/
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN jar xvf identityiq.war
 
 COPY iiq.properties $CATALINA_HOME/webapps/identityiq/WEB-INF/classes
